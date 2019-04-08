@@ -48,34 +48,66 @@
                     </div>
                 </div>
             </div>
-
-            {% if all_albums %}
-            <div class="row oneMusic-albums">
-                {% for album in all_albums %}
-                    <div class="col-md-4 col-lg-2">
-                    <div class="single-album-area wow fadeInUp" data-wow-delay="200ms">
-                    <div class="album-thumb">
-                        <a href="#">
-                    <img src="{{album.logo.url}}" class="img-responsive" alt="">
-                        </a>
-                    </div>
-                        <div class="album-info">
-                            <a href="#">
-                                <h5>{{ album.album_title }}</h5>
-                            </a>
-                            <p>{{ album.artist }}</p>
-                        </div>
-                    </div>
-                    </div>
-
-                {% endfor %}
-            {% else %}
-                <h3>You Dont have any Albums</h3>
-            {% endif %}
-
-            </div>
         </div>
     </section>
-    <!-- ##### Album Catagory Area End ##### -->
 
+    <section class="album-catagory section-padding-100-0">
+            <div class="container">
+                <div class="row">
+                    {% if all_albums %}
+                        <div class="row oneMusic-albums">
+                            {% for album in all_albums %}
+                                <div class="col-md-4 col-lg-2">
+                                <div class="single-album-area wow fadeInUp" data-wow-delay="200ms">
+                                <div class="album-thumb">
+                                    <a href="#">
+                                        <img src="{{album.image.url}}" class="img-responsive" alt="">
+                                    </a>
+                                </div>
+                                <div class="album-info">
+                                    <a href="{% url 'Home:AlbumView' album.id %}">
+                                        <h5>{{ album.name }}</h5>
+                                    </a>
+                                    <p>Artist:{{ album.artist }}</p>
+                                    <p>Released:{{ album.released }}</p>
+                                </div>
+                                </div>
+                                </div>
+
+                            {% endfor %}
+                        {% else %}
+                            <h3>You Dont have any Albums</h3>
+                         </div>
+                    {% endif %}
+                </div>
+            </div>
+    </section>
+    <section>
+        <h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1><h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1>
+        v
+        v
+        v
+        vvvvv
+        <h1>.</h1>
+        <h1>.</h1><h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1><h1>.</h1>
+        <h1>.</h1>
+
+
+
+
+
+    </section>
 {% endblock %}

@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home/', include('Home.urls')),
     url(r'^signup/', include('Signup.urls')),
-    url(r'^login/', include('Signup.urls')),
+
 
 ]
 if settings.DEBUG:

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</head>
+<body>
+<div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-body">
+            <div class="panel-heading">
+                {% if album.image %}
+                    <img src="{{ album.image.url }}" alt="not found" style="width: 300px;height: 200px; float: left;">
+                {% endif %}
+                <b>
+                    <h1>Album : {{ album.name }}</h1>
+                    <p style="float: left; padding-top: 10px">Artist {{ album.artist }}<br>
+                        Genre:{{ album.genre }}<br>
+                        Released:{{ album.released }}<br>
+                        Added :{{ album.created }}<br>
+                    </p>
+                </b>
+            </div>
+        </div>
+        <h3>
+            <a href="{% url 'Home:UpdateAlbum' album.id %}">Update Album</a>
+            <a href="{% url 'Home:AddSong' album.id %}">Upload Song</a>
+        </h3>
+
+        <!-- Table -->
+        <table class="table">
+            <tr>
+                <th>Song</th>
+                <th>Singer</th>
+                <th>Duration</th>
+                <th>genre</th>
+                <th>rating</th>
+                <th>Play</th>
+                <th>Actions</th>
+            </tr>
+            {% for i in album.song_set.all %}
+                <tr>
+                    <td>{{ i.song_name }}</td>
+                    <td>{{ i.song_artist }}</td>
+                    <td>{{ i.duration }}</td>
+                    <td>{{ album.genre }}</td>
+                    <td>{{ i.rating }}</td>
+                    <td>
+                        <audio src="{{ i.song.url }}" controls></audio>
+                    </td>
+                    <td><span class="glyphicon glyphicon-heart-empty"></span>
+                        <a href="{% url 'Home:UpdateSong' i.id %}">
+                            <span class="glyphicon glyphicon-edit"> </span>
+                        </a>
+                        <a href="{% url 'Home:DeleteSong' i.id %}">
+                            <span class="glyphicon glyphicon-trash"> </span>
+                        </a>
+                        <a href="{{ i.song.url }}" download>
+                            <span class="glyphicon glyphicon-download-alt"></span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <style>
+       input{
+            width: border-box;
+            height: 40px;
+            border: whitesmoke 2px solid;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+    div.center{
+    margin: auto;
+    width: 60%;
+    padding: 10px 20px;
+    }
+    </style>
+
+    <div class="center">
+        <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+               {{ form.as_p }}
+                <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

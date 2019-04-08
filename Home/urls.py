@@ -5,27 +5,27 @@ app_name = 'Home'
 urlpatterns = [
     # /home/
     url(r'^$', views.index.as_view(), name="index"),
-    # /home/album_punjabi
-    url(r'^album_punjabi/$', views.punjabi.as_view(), name="album_punjabi"),
 
-    url(r'^albums-store/$', views.albumstore.as_view(), name="albums-store"),
+    # /home/album-store
+    url(r'^album-store/$', views.albumstore.as_view(), name="albums-store"),
 
-    url(r'album_punjabi/add/$', views.AddCreate.as_view(), name='add-album'),
+    url('add_album/', views.AlbumAddView.as_view(), name='AddAlbum'),
 
-    url('album_hindi/', views.album_hindi),
+    url(r'^(?P<pk>[0-9]+)/$', views.AlbumView.as_view(), name='AlbumView'),
 
-    url('album_english/', views.album_english),
+    url(r'^(?P<pk>[0-9]+)/$', views.ArtistView.as_view(), name='ArtistView'),
 
-    # url('about/', views.login),
+    url(r'^(?P<pk>[0-9]+)/update/$', views.AlbumUpdateView.as_view(), name='UpdateAlbum'),
 
-    # /music/album/add/
+    url(r'^del/(?P<pk>[0-9]+)/$', views.AlbumDeleteView.as_view(), name='DeleteAlbum'),
 
-    #     # /home/<a.id>
-    #     url(r'^(?P<movie_id>[0-9]+)/$', views.detail, name='detail'),
-    #     # /home/<a.id>/favorite
-    #     url(r'^(?P<movie_id>[0-9]+)/favorite/$', views.favorite, name='favorite'),
+    url(r'^(?P<pk>[0-9]+)/add song/$', views.SongAddView.as_view(), name='AddSong'),
 
-    # music/45/
-    #     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
+    url('album/(?P<pk>[0-9]+)/delete', views.SongDeleteView.as_view(), name='DeleteSong'),
 
+    url('album/(?P<pk>[0-9]+)/update/', views.SongUpdateView.as_view(), name='UpdateSong'),
+
+    url(r'contact/$', views.contact, name='contact'),
+
+    # url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
 ]
